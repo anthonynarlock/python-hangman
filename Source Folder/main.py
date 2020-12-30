@@ -1,16 +1,17 @@
 #Python Hangman
 #Author: Anthony Narlock
 #Date: 12/29/2020
+#Version: INDEVELOPMENT 0.1
 
 import random
 
 def main():
     #Read the file for the list of words
-    get_lines = open("word_list.txt", "r").readlines()
-
+    word_list = [line.rstrip() for line in open("word_list.txt")]
+    
     #Pick random word from the list
-    word = random.choice(get_lines)
-    word_length = len(word) - 1
+    word = random.choice(word_list)
+    word_length = len(word)
     print("DEBUG: WORD=" + word)
 
     #Create pre-guessed word, which is hidden with dashes and
@@ -39,7 +40,7 @@ def main():
         dashed_word = "".join(dashed_word)
         print(dashed_word)
 
-        if(str(dashed_word) == str(word)):
+        if(dashed_word == word):
             word_guessed = True
 
         if(dashed_word == temp_dashed_word):
@@ -48,7 +49,7 @@ def main():
 
         if(lives == 0):
             break
-        print("DEBUG:\ndashed_word = " + str(dashed_word) + "\nword = " + str(word) + "\nword_guessed = " + str(word_guessed))
+        #print("DEBUG:\ndashed_word = " + str(dashed_word) + "\nword = " + str(word) + "\nword_guessed = " + str(word_guessed))
 
     if(word_guessed == True):
         print("The word has been guessed!")
