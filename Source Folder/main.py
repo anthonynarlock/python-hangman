@@ -1,9 +1,19 @@
 #Python Hangman
 #Author: Anthony Narlock
 #Date: 12/30/2020
-#Version: INDEVELOPMENT 0.2
+#Version: INDEVELOPMENT 0.3
 
 import random
+
+def get_word_list(difficulty):
+    if(difficulty == "easy"):
+        return [line.rstrip() for line in open("easy_word_list.txt")]
+    elif(difficulty == "medium"):
+        return [line.rstrip() for line in open("medium_word_list.txt")]
+    elif(difficulty == "hard"):
+        return [line.rstrip() for line in open("hard_word_list.txt")]
+    else:
+        print("An unexpected error occured when grabbing list information")
 
 #generate_word: Generates randomly selected word from a list of words
 def generate_word(word_list):
@@ -17,8 +27,15 @@ def end_status(word_guessed, lives, word):
         print("You lose! The word was: " + word)
 
 def main():
+    print("Welcome to Hangman\nCreated by Anthony Narlock")
+    print("Enter what difficulty you would like to play at:\nEasy: 3-5 letter words\nMedium: 6-9 letter words\nHard: 10+ letter words")
+    difficulty = input("My difficulty: ")
+    #while(difficulty.lower() != "easy" or difficulty.lower() != "medium" or difficulty.lower() != "hard"):
+    #    print("Error: Expected difficulty response must be \"easy\", \"medium\", or \"hard\"")
+    #    difficulty = input("My difficulty: ")
+
     #Read the file for the list of words
-    word_list = [line.rstrip() for line in open("word_list.txt")]
+    word_list = get_word_list(difficulty)
     
     #Pick random word from the list
     word = generate_word(word_list)
