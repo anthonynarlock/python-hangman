@@ -1,7 +1,7 @@
 #Python Hangman
 #Author: Anthony Narlock
 #Date: 12/30/2020
-#Version: INDEVELOPMENT 0.3
+#Version: INDEVELOPMENT 0.4
 
 import random
 
@@ -23,10 +23,15 @@ def generate_word(word_list):
 def end_status(word_guessed, lives, word):
     if(word_guessed == True):
         print("You win! The word was guessed.\nYou had " + str(lives) + " lives remaining.\n#############")
-        game()
+        again = input("play again? (y/n)")
+        if(again == "y"):
+            game()
+
     else:
         print("You lose! The word was: " + word + "\n#############")
-        game()
+        again = input("play again? (y/n)")
+        if(again == "y"):
+            game()
 
 def main():
     print("Welcome to Hangman\nCreated by Anthony Narlock\n#############")
