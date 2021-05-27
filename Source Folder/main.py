@@ -17,17 +17,22 @@ def get_word_list(difficulty):
 
 #generate_word: Generates randomly selected word from a list of words
 def generate_word(word_list):
-    return random.choice(word_list)
+    return random.choice(word_list).lower()
 
 #end_status: Displays the end status of the game (win/lose)
 def end_status(word_guessed, lives, word):
     if(word_guessed == True):
-        print("You win! The word was guessed.\nYou had " + str(lives) + " lives remaining.")
+        print("You win! The word was guessed.\nYou had " + str(lives) + " lives remaining.\n#############")
+        game()
     else:
-        print("You lose! The word was: " + word)
+        print("You lose! The word was: " + word + "\n#############")
+        game()
 
 def main():
-    print("Welcome to Hangman\nCreated by Anthony Narlock")
+    print("Welcome to Hangman\nCreated by Anthony Narlock\n#############")
+    game()
+
+def game():
     print("Enter what difficulty you would like to play at:\nEasy: 3-5 letter words\nMedium: 6-9 letter words\nHard: 10+ letter words")
     difficulty = input("My difficulty: ")
     #while(difficulty.lower() != "easy" or difficulty.lower() != "medium" or difficulty.lower() != "hard"):
