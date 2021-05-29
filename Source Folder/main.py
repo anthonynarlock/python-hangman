@@ -3,7 +3,10 @@
 #Date: 12/30/2020
 #Version: INDEVELOPMENT 0.4
 
+
 import random
+from *
+
 
 def get_word_list(difficulty):
     if(difficulty == "easy"):
